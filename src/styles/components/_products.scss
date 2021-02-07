@@ -1,0 +1,251 @@
+.card-grid{
+    display: flex;
+    width: stretch;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.products-screen{
+    width: stretch;
+}
+
+.card-img{
+    box-shadow: 1px 1px 20px darken($color: $primary, $amount: 40);
+    width: 100%;
+}
+
+.product-img{
+    box-shadow: 1px 1px 20px darken($color: $primary, $amount: 40);
+}
+
+.card-title, .card-body{
+    display: flex;
+    justify-content: center;
+}
+
+.card-buttons{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.navbar{
+    position: sticky;
+    top: 0px;
+    flex: 0 0 auto;
+}
+
+.cart-items{
+    overflow: scroll;
+    width: stretch;
+    padding: 20px;
+    flex: 1 0 auto;
+    padding-bottom: 100px;
+}
+
+.empty-text{
+    align-self: center;
+    justify-self: center;
+}
+
+.cart-items-empty{
+    overflow: scroll;
+    width: stretch;
+    padding: 20px;
+    flex: 1 0 auto;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.return{
+    font-size: larger;
+    margin-bottom: 10px;
+    cursor: pointer;
+    width: stretch;
+}
+
+.card-button{
+    width: 50%;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    height: 30px;
+    &.btn-block{
+        width: stretch;
+    }
+    &.primary{
+        background-color: $btn-primary;
+    }
+    &.secondary{
+        background-color: $btn-secondary;
+    }
+    &.warning{
+        background-color: $btn-warning;
+    }
+    &.outline-warning{
+        background-color: $primary;
+        border: 3px solid $btn-warning;
+        color: $btn-warning
+    }
+    &:hover{
+        &.primary{
+            background-color: darken($color: $btn-primary, $amount: 10);
+        }
+        &.secondary{
+            background-color: darken($color: $btn-secondary, $amount: 10);
+        }
+        &.warning{
+            background-color: darken($color: $btn-warning, $amount: 10);
+        }
+    }
+}
+
+.product-screen{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.product-card{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.product-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media(min-width:1200px){
+    .card-title, .card-body{
+        font-size: medium;
+    }
+    .card-grid{
+        margin: 30px;
+    }
+    .card-img{
+        height: 25vw;
+    }
+    .card{
+        width: 25%;
+        padding: 10px;
+    }
+    .card-button{
+        height: 30px;
+    }
+    .product-screen{
+        margin: 30px;
+    }
+    .product-info{
+        margin: 30px;
+        width: calc(50% - 60px);
+    }
+    .product-card{
+        margin: 30px;
+        width: calc(50% - 60px);
+    }
+    .product-img{
+        width: 100%;
+    }
+}
+
+@media(min-width:992px) and (max-width:1199px){
+    .card-grid{
+        margin: 25px;
+    }
+    .card{
+        width: 33.3333%;
+    }
+    .card-button{
+        height: 30px;
+    }
+}
+
+@media(min-width:768px) and (max-width:991px){
+    .card-grid{
+        margin: 20px;
+    }
+    .card{
+        width: 33.3333%;
+    }
+    .card-button{
+        height: 30px;
+    }
+}
+
+@media(min-width:576px) and (max-width:767px){
+    .card-grid{
+        margin: 15px;
+    }
+    .card{
+        width: 50%;
+    }
+    .card-button{
+        height: 30px;
+    }
+}
+
+@media(max-width:575px){
+    .card-title, .card-body{
+        font-size: large;
+    }
+    .card-grid{
+        margin: 10px;
+    }
+    .card{
+        width: 100%;
+    }
+    .card-img{
+        height: 100vw;
+    }
+    .card-button{
+        width: calc(50% - 4px);
+        margin: 2px;
+        box-shadow: 3px 3px 5px grey;
+        font-size: medium;
+        height: 40px;
+    }
+    .product-screen{
+        margin: 10px;
+    }
+    .product-card{
+        width: 100%;
+    }
+    .product-info{
+        margin: 10px;
+        width: 100%;
+    }
+    .product-img{
+        width: 100%;
+    }
+    .cart-buttons{
+        background-color: $primary;
+        height: 90px;
+        width: stretch;
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        flex: 0 0 auto;
+    }
+    .cart-buttons-empty{
+        background-color: $primary;
+        height: 50px;
+        width: stretch;
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        flex: 0 0 auto;
+    }
+    .cart-total{
+        height: 40px;
+    }
+    .empty-text{
+        margin-top: 20vh;
+        align-self: center;
+        justify-self: center;
+    }    
+}

@@ -1,7 +1,8 @@
 import { types } from "../types/types";
 
 const initialState = {
-    cartItems: []
+    cartItems: [],
+    cartStatus: false
 }
 
 export const cartReducer = (state = initialState, action) => {
@@ -23,6 +24,19 @@ export const cartReducer = (state = initialState, action) => {
             return {
                 ...state,
                 cartItems: []
+            }
+        case types.cartSetStatus:
+            return {
+                ...state,
+                cartStatus: !state.cartStatus
+            }
+        case types.cartIncrementItem:
+            const index = state.cartItems.findIndex(item => item.id === action.payload.id);
+            const cartItems = [...state.cartItems];
+            cartItems[index] = action.payload;
+            return {
+                ...state,
+                cartItems
             }
         default: 
             return state;

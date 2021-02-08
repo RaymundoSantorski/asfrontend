@@ -1,33 +1,41 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
-import { addItem } from '../actions/cart';
+import { addItem, incrementItem } from '../actions/cart';
+import { CartScreen } from './CartScreen';
 
 
 export const ProductCard = ({id, title, description, price, img}) => {
 
     const dispatch = useDispatch();
     const history = useHistory();
+    const {cartItems} = useSelector(state => state.cart);
 
     const handleProductView = () => {
         history.push(`/product/${id}`);
     }
 
     const handleAddItem = () => {
-        dispatch(addItem({
-            id,
-            description,
-            title,
-            price,
-            img
-        }));
+        const item = cartItems.find(item => item.id === id);
+        if(!item){
+            dispatch(addItem({
+                id,
+                description,
+                title,
+                price,
+                img,
+                cant: 1
+            }));
+        }else{
+            dispatch(incrementItem(item));
+        }
     }
 
     return (
         <div className="card" >
             <div className="" onClick={handleProductView}>
-                <img src={img} alt="dark-galaxy" className="card-img" />
+                <img src={img} alt="dark-galaxy" loading="lazy" className="card-img" />
             </div>
             <div className="card-title">
                 <h1>

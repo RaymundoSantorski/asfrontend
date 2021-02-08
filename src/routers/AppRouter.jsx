@@ -11,7 +11,7 @@ import { startGettingProducts } from '../actions/products';
 export const AppRouter = () => {
 
     const dispatch = useDispatch();
-    const {cartItems} = useSelector(state => state.cart);
+    const {cartItems, cartStatus} = useSelector(state => state.cart);
 
     useEffect(() => {
         const items = JSON.parse(localStorage.getItem('cartItems')) || [];

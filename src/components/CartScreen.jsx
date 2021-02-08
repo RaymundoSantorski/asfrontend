@@ -50,9 +50,9 @@ export const CartScreen = () => {
                 <p onClick={handleReturn} className="return"> {returnText} </p>
                 {
                     cartItems.map(item => {
-                        total+=Number(item.price);
+                        total+=Number(item.price * item.cant);
                         return (
-                            <p key={item.id}>{item.title} <strong>${item.price}</strong></p>
+                            <p key={item.id}>{item.title} <strong>${item.price}</strong> {item.cant}</p>
                         );
                     })
                 }

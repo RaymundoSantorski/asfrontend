@@ -1,7 +1,7 @@
 import React from 'react';
 import {useParams, useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {addItem} from '../actions/cart';
+import {addItem, incrementItem} from '../actions/cart';
 
 export const ProductScreen = () => {
 
@@ -15,6 +15,7 @@ export const ProductScreen = () => {
     const dispatch = useDispatch();
 
     const {products} = useSelector(state => state.products);
+    const {cartItems} = useSelector(state => state.cart);
     const {id} = useParams();
     const product = products.find(product => product.id === id);
 
@@ -27,13 +28,19 @@ export const ProductScreen = () => {
     }
 
     const handleAddItem = () => {
-        dispatch(addItem({
-            id: product.id,
-            description: product.description,
-            title: product.title,
-            price: product.price,
-            img: product.img
-        }));
+        const item = cartItems.find(item => item.id === id);
+        if(!item){
+            dispatch(addItem({
+                id: product.id,
+                description: product.description,
+                title: product.title,
+                price: product.price,
+                img: product.img,
+                cant: 1
+            }));
+        }else{
+            dispatch(incrementItem(item));
+        }
     }
 
     return (
